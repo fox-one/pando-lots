@@ -1,2 +1,2 @@
-export const $t = (vm, key: string) =>
-  vm.$vuetify.lang.t("$vuetify.pando." + key);
+export const $t = (vm: Vue, key: string, ...interpolations: string[]) =>
+  vm.$vuetify.lang.t("$vuetify.lots." + key, interpolations.join(" "));

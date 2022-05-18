@@ -1,0 +1,7 @@
+{
+  "lots": {
+    "channel_info_id": "Community’s Mixin id is {0}",
+    "chat_only_mixin": "The message only visible on Mixin Messenger.<br /> {0}",
+    "learn_more": "Learn More"
+  }
+}

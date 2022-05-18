@@ -44,7 +44,11 @@ export default {
       exports: "named"
     }
   ],
-  external: [...Object.keys(pkg.peerDependencies), "vuetify/lib"],
+  external: [
+    ...Object.keys(pkg.peerDependencies),
+    "vuetify/lib",
+    "@foxone/utils/http"
+  ],
   plugins: [
     typescript({
       typescript: require("typescript"),

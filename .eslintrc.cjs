@@ -18,6 +18,8 @@ module.exports = {
   rules: {
     ...base.rules,
     "sort-keys": "off",
+    "no-undef": "off",
+    "vue/no-v-html": "off",
     "vue/component-definition-name-casing": "off",
     "vue/require-default-prop": "off",
     "@typescript-eslint/no-floating-promises": "off",

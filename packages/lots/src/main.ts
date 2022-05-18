@@ -1,11 +1,20 @@
 import Vue from "vue";
 import App from "./Playground.vue";
-import store from "./store";
 import i18n from "./i18n";
 import vuetify from "./plugins/uikit";
-import PandoUI from "./index";
+import Vuex from "vuex";
 
-Vue.use(PandoUI, vuetify);
+import PandoLots from "./index";
+
+Vue.use(Vuex);
+const store = new Vuex.Store({
+  state: {},
+  mutations: {},
+  actions: {},
+  modules: {}
+});
+
+Vue.use(PandoLots, { vuetify, store });
 
 Vue.config.productionTip = false;
 

@@ -11,16 +11,23 @@
     "build:dist": "vue-cli-service build"
   },
   "peerDependencies": {
+    "@foxone/fennec-dapp": "^0.5.4",
     "@foxone/icons": "^3.0.0",
     "@foxone/uikit": "^3.0.0",
+    "@foxone/utils": "^0.2.22",
+    "axios": "^0.27.2",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^9.1.2",
-    "vuetify": "^2.5.0"
+    "vuetify": "^2.5.0",
+    "vuex": "^3.4.0",
+    "vuex-persistedstate": "3.2.1"
   },
   "devDependencies": {
-    "@foxone/icons": "3.0.1-55",
+    "@foxone/fennec-dapp": "^0.5.4",
+    "@foxone/icons": "beta",
     "@foxone/uikit": "beta",
+    "@foxone/utils": "^0.2.22",
     "@rollup/plugin-image": "^2.1.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
@@ -34,6 +41,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
@@ -60,7 +68,8 @@
     "vue-template-compiler": "^2.6.11",
     "vuetify": "^2.5.14",
     "vuetify-loader": "^1.7.3",
-    "vuex": "^3.4.0"
+    "vuex": "^3.4.0",
+    "vuex-persistedstate": "3.2.1"
   },
   "installConfig": {
     "hoistingLimits": "workspaces"
