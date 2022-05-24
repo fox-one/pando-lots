@@ -13,9 +13,21 @@
       </div>
 
       <div class="message-bubble">
-        <message-placeholder v-if="meta.notSupport" :message="message" />
-        <message-text v-if="meta.isTextMessage" :message="message" />
-        <message-image v-if="meta.isImageMessage" :message="message" />
+        <message-placeholder
+          v-if="meta.notSupport"
+          :message="message"
+          v-on="$listeners"
+        />
+        <message-text
+          v-if="meta.isTextMessage"
+          :message="message"
+          v-on="$listeners"
+        />
+        <message-image
+          v-if="meta.isImageMessage"
+          :message="message"
+          v-on="$listeners"
+        />
       </div>
     </div>
   </div>
@@ -74,6 +86,7 @@ export default MessageItem;
 
   .message-content {
     margin-left: 16px;
+    overflow: hidden;
   }
 
   .message-info {
@@ -99,6 +112,7 @@ export default MessageItem;
     line-height: 20px;
     margin-top: 8px;
     border-radius: 8px;
+    max-width: 100%;
     background: var(--v-greyscale_6-base);
     border: 1px solid var(--v-greyscale_6-base);
   }

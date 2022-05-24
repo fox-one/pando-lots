@@ -9,7 +9,14 @@ import {
   FIconClose,
   FIconChevronDown,
   FIconCrowd4PFill,
-  FIconHorn4PFill
+  FIconHorn4PFill,
+  FIconAlert4PFill,
+  FIconComment4PFill,
+  FIconSendFill,
+  FIconPicture,
+  FIconSetting,
+  FIconAlertFill,
+  FIconCommentAFill
 } from "@foxone/icons";
 import Fennec from "@foxone/fennec-dapp";
 
@@ -40,7 +47,10 @@ export default {
 
     // register lots states
     store.registerModule(STORE_KEY, modules);
-    createPersistedState({ key: "lots", paths: [STORE_KEY + ".token"] })(store);
+    createPersistedState({
+      key: "lots",
+      paths: [STORE_KEY + ".tokens", STORE_KEY + ".welcome"]
+    })(store);
 
     // register losts utils on vue property
     Vue.prototype.$lots = {
@@ -57,7 +67,14 @@ export default {
         FIconClose: { component: FIconClose },
         FIconChevronDown: { component: FIconChevronDown },
         FIconCrowd4PFill: { component: FIconCrowd4PFill },
-        FIconHorn4PFill: { component: FIconHorn4PFill }
+        FIconHorn4PFill: { component: FIconHorn4PFill },
+        FIconAlert4PFill: { component: FIconAlert4PFill },
+        FIconComment4PFill: { component: FIconComment4PFill },
+        FIconSendFill: { component: FIconSendFill },
+        FIconPicture: { component: FIconPicture },
+        FIconSetting: { component: FIconSetting },
+        FIconAlertFill: { component: FIconAlertFill },
+        FIconCommentAFill: { component: FIconCommentAFill }
       },
       icons
     );

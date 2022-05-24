@@ -3,10 +3,10 @@ import App from "./Playground.vue";
 import i18n from "./i18n";
 import vuetify from "./plugins/uikit";
 import Vuex from "vuex";
-
 import PandoLots from "./index";
 
 Vue.use(Vuex);
+
 const store = new Vuex.Store({
   state: {},
   mutations: {},
@@ -15,7 +15,6 @@ const store = new Vuex.Store({
 });
 
 Vue.use(PandoLots, { vuetify, store });
-
 Vue.config.productionTip = false;
 
 new Vue({

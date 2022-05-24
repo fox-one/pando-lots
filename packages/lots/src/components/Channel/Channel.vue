@@ -1,5 +1,9 @@
 <template>
-  <v-skeleton-loader :loading="loading" type="article">
+  <v-skeleton-loader
+    :loading="loading"
+    type="article"
+    class="pando-lots-channel-wrapper"
+  >
     <div class="pando-lots-channel">
       <channel-title :group="group" v-bind="$attrs" />
       <channel-information :group="group" />
@@ -31,6 +35,10 @@ export default Channel;
 </script>
 
 <style lang="scss" scope>
+.pando-lots-channel-wrapper {
+  min-height: 142px;
+}
+
 .pando-lots-channel {
   padding: 24px;
 }

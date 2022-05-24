@@ -13,6 +13,8 @@ declare namespace API {
     mime_type: string;
     view_url: string;
     thumb_url: string;
+    width?: number;
+    height?: number;
   }
 
   export interface Message {

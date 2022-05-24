@@ -1,7 +1,18 @@
 {
   "lots": {
     "channel_info_id": "Community’s Mixin id is {0}",
+    "chat_button": "Connect wallet to chat",
     "chat_only_mixin": "The message only visible on Mixin Messenger.<br /> {0}",
-    "learn_more": "Learn More"
+    "chat_only_operator_speak": "Only operators can speak",
+    "chat_placeholder": "Wirte a reply",
+    "chat_reconnect": "Network error, reconnecting...",
+    "disconnect_wallet": "Disconnect Wallet",
+    "hello_desc": "Pando Lots, a messaging platform for users to simply and instantly message each other. Before we start, here are some rules you should be aware of:",
+    "hello_rules_1": "Chat content will be publicly visible. Please do not share confidential information.",
+    "hello_rules_2": "Only the recent {0} messages are kept. You can join the corresponding Mixin community to stay in touch.",
+    "hello_rules_3": "This is a community for everyone. Please be kind.",
+    "hello_title": "Welcome to Pando Lots",
+    "learn_more": "Learn More",
+    "hello_button": "I Understand"
   }
 }

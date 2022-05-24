@@ -3,6 +3,7 @@ import { ActionTypes, GetterTypes, MutationTypes } from "./types";
 import { END_POINTS } from "../constants";
 
 const state = () => ({
+  welcome: true,
   tokens: {},
   current: "",
   env: "product",
@@ -14,6 +15,9 @@ const state = () => ({
 });
 
 const getters = {
+  [GetterTypes.WELCOME](state) {
+    return state.welcome;
+  },
   [GetterTypes.CURRENT_GROUP_ID](state) {
     return state.current;
   },
@@ -34,10 +38,16 @@ const getters = {
   },
   [GetterTypes.MESSAGES](state) {
     return state.messages;
+  },
+  [GetterTypes.SETTINGS](state) {
+    return state.settings;
   }
 };
 
 const mutations = {
+  [MutationTypes.SET_WELCOME](state, value) {
+    state.welcome = value;
+  },
   [MutationTypes.SET_TOKEN](state, token) {
     Vue.set(state.tokens, state.current, token);
   },
@@ -70,6 +80,7 @@ const mutations = {
   [MutationTypes.SET_MESSAGE](state, message) {
     if (!state.messageIdsMap[message.id]) {
       Vue.set(state.messageIdsMap, message.id, message);
+      state.messages.push(message);
     }
   }
 };
@@ -92,6 +103,11 @@ const actions = {
 
     commit(MutationTypes.SET_GROUP_INFO, groupInfo);
     commit(MutationTypes.SET_MESSAGES, messages);
+  },
+  [ActionTypes.LOGOUT]({ commit }) {
+    commit(MutationTypes.REMOVE_TOKEN);
+    commit(MutationTypes.SET_PROIFLE, null);
+    commit(MutationTypes.SET_SETTINGS, null);
   }
 };
 

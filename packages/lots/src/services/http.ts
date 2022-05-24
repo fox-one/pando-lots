@@ -1,6 +1,6 @@
 import Http from "@foxone/utils/http";
 import { CODE_AUTH_FAIL } from "../constants";
-import { GlobalGetters, GlobalMutations } from "../store/types";
+import { GlobalActions, GlobalGetters } from "../store/types";
 import createApis from "./apis";
 
 import type { Store } from "vuex";
@@ -8,10 +8,12 @@ import type { Store } from "vuex";
 function generateStructureInterceptor(store: Store<any>) {
   return [
     (res) => {
-      if (res?.data?.code === CODE_AUTH_FAIL) {
-        store.commit(GlobalMutations.REMOVE_TOKEN);
+      if (res?.data?.code) {
+        if (res?.data?.code === CODE_AUTH_FAIL) {
+          store.commit(GlobalActions.LOGOUT);
+        }
 
-        return Promise.reject(res.data.error);
+        return Promise.reject(res.data);
       }
 
       return res.data;

@@ -7,17 +7,21 @@
       'close-on-content-click': false,
       'disable-keys': true
     }"
-    class="pando-lots-modal"
     content-class="pando-lots-modal__container"
+    class="pando-lots-modal"
   >
     <template #activator="{ on }">
-      <slot name="activator" :on="on" />
+      <slot name="activator" :on="on" :loading="loading" :group="group" />
     </template>
 
+    <welcome-modal v-if="showWelcome" />
+
     <pando-lots-content
+      v-else
       :group-id="groupId"
       :groups="groups"
       :loading="loading"
+      v-on="$listeners"
       @close="handleClose"
     />
   </f-bottom-sheet>
@@ -28,6 +32,7 @@ import "./PandoLots.scss";
 
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import PandoLotsContent from "./PandoLotsContent.vue";
+import WelcomeModal from "../WelcomeModal";
 import {
   GlobalActions,
   GlobalGetters,
@@ -35,7 +40,10 @@ import {
 } from "../../store/types";
 
 @Component({
-  components: { PandoLotsContent }
+  components: {
+    PandoLotsContent,
+    WelcomeModal
+  }
 })
 class PandoLots extends Vue {
   @Prop({ type: String, default: "" }) groupId!: string;
@@ -52,8 +60,18 @@ class PandoLots extends Vue {
     return this.$store.getters[GlobalGetters.LOGGED];
   }
 
+  get group() {
+    return this.$store.getters[GlobalGetters.GROUP_INFO];
+  }
+
   get currentGroup() {
     return this.$store.getters[GlobalGetters.CURRENT_GROUP_ID];
+  }
+
+  get showWelcome() {
+    const welcome = this.$store.getters[GlobalGetters.WELCOME];
+
+    return this.logged && welcome;
   }
 
   created() {
@@ -67,9 +85,8 @@ class PandoLots extends Vue {
     });
   }
 
-  @Watch("currentGroup")
+  @Watch("currentGroup", { immediate: true })
   async init() {
-    console.log("init");
     this.loading = true;
 
     await this.$store.dispatch(GlobalActions.LOAD_PUBLIC_INFO, this);

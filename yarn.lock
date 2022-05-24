@@ -2741,7 +2741,7 @@ __metadata:
   dependencies:
     "@foxone/fennec-dapp": ^0.5.4
     "@foxone/icons": beta
-    "@foxone/uikit": beta
+    "@foxone/uikit": ^3.1.4
     "@foxone/utils": ^0.2.22
     "@rollup/plugin-image": ^2.1.1
     "@rollup/plugin-json": ^4.1.0
@@ -2761,6 +2761,7 @@ __metadata:
     eslint: ^6.7.2
     eslint-plugin-prettier: ^3.3.1
     eslint-plugin-vue: ^6.2.2
+    photoswipe: 4.1.3
     postcss: ^8.3.11
     postcss-url: ^10.1.3
     prettier: ^2.2.1
@@ -2800,9 +2801,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@foxone/uikit@npm:beta":
-  version: 3.1.2-7
-  resolution: "@foxone/uikit@npm:3.1.2-7"
+"@foxone/uikit@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "@foxone/uikit@npm:3.1.4"
   dependencies:
     "@nuxt/types": ^2.15.8
     axios: ^0.26.0
@@ -2817,7 +2818,7 @@ __metadata:
     "@foxone/utils": ^0.2.6
     vue: ^2.6.12
     vuetify: ^2.4.5
-  checksum: b6de5b877b547e70090b6ba1eb96584945cff7b57b2291d999eeda0203b08e837a935f54122f1857da68cb12011598e82de0d93338da5f049b6bd0171b1f101a
+  checksum: 02ceabbc37132e449e2921f3c2bac96e69c0c5f52bdfce9a1ea6f78c51aa8cfbbda24c9fd0e740602116be7c125d73a789934552bfa3109cecd5f1bbc0dac77e
   languageName: node
   linkType: hard
 
@@ -15544,6 +15545,13 @@ fsevents@^1.2.7:
   version: 2.1.0
   resolution: "performance-now@npm:2.1.0"
   checksum: bb4ebed0b03d6c3ad3ae4eddd1182c895d385cff9096af441c19c130aaae3ea70229438ebc3297dfc52c86022f6becf177a810050823d01bf5280779cd2de624
+  languageName: node
+  linkType: hard
+
+"photoswipe@npm:4.1.3":
+  version: 4.1.3
+  resolution: "photoswipe@npm:4.1.3"
+  checksum: 7c0a04c17f79fc5351d0bc4fde6d02b07f41df48467a6b80e030efad98ee214aa31cd195720c05930d78015020ed49473d740302daf0acb99e613701ced9d28b
   languageName: node
   linkType: hard
 

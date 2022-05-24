@@ -20,5 +20,5 @@ export async function loginFennec(vm: Vue, { groupId }) {
 export async function updateAccount(vm: Vue, { token }) {
   vm.$store.commit(GlobalMutations.SET_TOKEN, token);
 
-  await vm.$store.dispatch(GlobalActions.LOAD_ACCOUNT_INFO);
+  await vm.$store.dispatch(GlobalActions.LOAD_ACCOUNT_INFO, vm);
 }

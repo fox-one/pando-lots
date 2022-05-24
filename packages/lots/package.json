@@ -26,7 +26,7 @@
   "devDependencies": {
     "@foxone/fennec-dapp": "^0.5.4",
     "@foxone/icons": "beta",
-    "@foxone/uikit": "beta",
+    "@foxone/uikit": "^3.1.4",
     "@foxone/utils": "^0.2.22",
     "@rollup/plugin-image": "^2.1.1",
     "@rollup/plugin-json": "^4.1.0",
@@ -73,5 +73,8 @@
   },
   "installConfig": {
     "hoistingLimits": "workspaces"
+  },
+  "dependencies": {
+    "photoswipe": "4.1.3"
   }
 }

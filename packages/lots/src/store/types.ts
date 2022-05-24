@@ -8,7 +8,9 @@ export const GetterTypes = {
   LOGGED: "LOGGED",
   GROUP_INFO: "GROUP_INFO",
   PROFILE: "PROFILE",
-  MESSAGES: "MESSAGES"
+  MESSAGES: "MESSAGES",
+  SETTINGS: "SETTINGS",
+  WELCOME: "WELCOME"
 };
 
 export const MutationTypes = {
@@ -20,12 +22,14 @@ export const MutationTypes = {
   SET_SETTINGS: "SET_SETTINGS",
   SET_GROUP_INFO: "SET_GROUP_INFO",
   SET_MESSAGES: "SET_MESSAGES",
-  SET_MESSAGE: "SET_MESSAGE"
+  SET_MESSAGE: "SET_MESSAGE",
+  SET_WELCOME: "SET_WELCOME"
 };
 
 export const ActionTypes = {
   LOAD_ACCOUNT_INFO: "LOAD_ACCOUNT_INFO",
-  LOAD_PUBLIC_INFO: "LOAD_PUBLIC_INFO"
+  LOAD_PUBLIC_INFO: "LOAD_PUBLIC_INFO",
+  LOGOUT: "LOGOUT"
 };
 
 export const GlobalGetters = {

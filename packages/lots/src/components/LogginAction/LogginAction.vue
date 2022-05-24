@@ -8,8 +8,10 @@
     @error="handleError"
   >
     <template #activator="{ on }">
-      <f-button :loading="loading" v-on="on">
-        {{ btnText }}
+      <f-button color="primary" :loading="loading" v-on="on">
+        <v-icon size="16" class="mr-2">$FIconComment4PFill</v-icon>
+
+        <span> {{ btnText }} </span>
       </f-button>
     </template>
   </f-auth-method-modal>
@@ -64,6 +66,10 @@ class LogginAction extends Vue {
     }
 
     this.loading = false;
+  }
+
+  handleError(error) {
+    this.$emit("error", error);
   }
 }
 export default LogginAction;
