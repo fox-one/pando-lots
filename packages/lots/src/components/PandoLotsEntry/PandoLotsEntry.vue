@@ -33,13 +33,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
+import { GlobalGetters, GlobalMutations } from "../../store/types";
 
 @Component
 class PandoLotsEntry extends Vue {
-  @Prop() loading!: boolean;
+  @Prop({ type: String, default: "product" }) env!: string;
 
-  @Prop() group!: API.GroupInfo;
+  @Prop() groupId!: string;
+
+  loading = false;
+
+  group: API.GroupInfo | null = null;
 
   get meta() {
     return {
@@ -47,6 +52,31 @@ class PandoLotsEntry extends Vue {
       avatars: this.group?.active_users?.map((x) => x.avatar_url),
       members: this.group?.members_count?.total
     };
+  }
+
+  mounted() {
+    this.requestGroupInfo();
+  }
+
+  @Watch("env", { immediate: true })
+  handleEnvChange() {
+    this.$store.commit(GlobalMutations.SET_CURRENT_ENV, this.env);
+
+    const endpoints = this.$store.getters[GlobalGetters.END_POINTS];
+
+    this.$lots.$apis.config({ baseURL: endpoints.http });
+  }
+
+  async requestGroupInfo() {
+    this.loading = true;
+
+    try {
+      this.group = await this.$lots.$apis.getGroupInfo(this.groupId);
+    } catch (error) {
+      this.$emit("error", error);
+    }
+
+    this.loading = false;
   }
 }
 export default PandoLotsEntry;

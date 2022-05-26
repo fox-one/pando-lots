@@ -1,4 +1,5 @@
 import { GlobalActions, GlobalMutations } from "../store/types";
+import { connectFennec } from "./helper";
 
 export async function loginMixin(vm: Vue, { code, groupId }) {
   const resp = await vm.$lots.$apis.authMixin(groupId, code);
@@ -6,12 +7,8 @@ export async function loginMixin(vm: Vue, { code, groupId }) {
   await updateAccount(vm, { token: resp.token });
 }
 
-export async function loginFennec(vm: Vue, { groupId }) {
-  await vm.$lots.$fennec.connect("Pando Lots");
-
-  const token = await vm.$lots.$fennec.ctx?.wallet?.signToken({
-    payload: { from: "pando-lots" }
-  });
+export async function loginFennec(vm: Vue, { container, groupId }) {
+  const token = await connectFennec(vm, container);
   const resp = await vm.$lots.$apis.authFennec(groupId, token || "");
 
   await updateAccount(vm, { token: resp.token });

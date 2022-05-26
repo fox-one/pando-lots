@@ -1,13 +1,14 @@
 <template>
   <f-bottom-sheet
     v-model="dialog"
+    hide-overlay
     :hide-close-icon="true"
     :menu-props="{
       'close-on-click': false,
       'close-on-content-click': false,
       'disable-keys': true
     }"
-    content-class="pando-lots-modal__container"
+    :content-class="contentClass"
     class="pando-lots-modal"
   >
     <template #activator="{ on }">
@@ -21,6 +22,7 @@
       :group-id="groupId"
       :groups="groups"
       :loading="loading"
+      :container="container"
       v-on="$listeners"
       @close="handleClose"
     />
@@ -52,9 +54,18 @@ class PandoLots extends Vue {
 
   @Prop({ type: String, default: "product" }) env!: string;
 
+  @Prop({ type: String, default: "app" }) container!: string;
+
   dialog = false;
 
   loading = false;
+
+  get contentClass() {
+    return [
+      "pando-lots-modal__container",
+      `pando-lots-modal__container--${this.container}`
+    ].join(" ");
+  }
 
   get logged() {
     return this.$store.getters[GlobalGetters.LOGGED];
@@ -87,6 +98,8 @@ class PandoLots extends Vue {
 
   @Watch("currentGroup", { immediate: true })
   async init() {
+    if (!this.currentGroup) return;
+
     this.loading = true;
 
     await this.$store.dispatch(GlobalActions.LOAD_PUBLIC_INFO, this);
@@ -99,12 +112,23 @@ class PandoLots extends Vue {
   }
 
   @Watch("env", { immediate: true })
-  handleGroupChange() {
+  handleEnvChange() {
     this.$store.commit(GlobalMutations.SET_CURRENT_ENV, this.env);
 
     const endpoints = this.$store.getters[GlobalGetters.END_POINTS];
 
     this.$lots.$apis.config({ baseURL: endpoints.http });
+  }
+
+  @Watch("dialog")
+  handleDialogChange(value) {
+    if (!value) {
+      this.$emit("close");
+    }
+  }
+
+  handleOpen() {
+    this.dialog = true;
   }
 
   handleClose() {

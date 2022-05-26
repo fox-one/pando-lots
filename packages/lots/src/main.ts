@@ -1,6 +1,7 @@
 import Vue from "vue";
-import App from "./Playground.vue";
+import App from "./App.vue";
 import i18n from "./i18n";
+import router from "./router";
 import vuetify from "./plugins/uikit";
 import Vuex from "vuex";
 import PandoLots from "./index";
@@ -19,6 +20,7 @@ Vue.config.productionTip = false;
 
 new Vue({
   store,
+  router,
   i18n,
   vuetify,
   render: (h) => h(App)

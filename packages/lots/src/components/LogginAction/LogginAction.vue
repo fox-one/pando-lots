@@ -19,35 +19,40 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { $t } from "../../utils/helper";
+import { $t, hasFennec } from "../../utils/helper";
 import { loginMixin, loginFennec } from "../../utils/account";
 import { GlobalGetters } from "../../store/types";
 
 @Component
 class LogginAction extends Vue {
-  @Prop({ type: String, default: "" }) clientId!: string;
-
-  @Prop({ type: String, default: "" }) groupId!: string;
-
-  @Prop({ type: String, default: "PROFILE:READ MESSAGES:REPRESENT" })
-  scope!: string;
+  @Prop() container!: string;
 
   hasFennec = false;
 
   loading = false;
 
+  get clientId() {
+    return this.group?.client_id ?? "";
+  }
+
+  get scope() {
+    return this.group?.mixin_oauth_scope.replace(/\+/g, " ") ?? "";
+  }
+
   get btnText() {
     return $t(this, "chat_button");
+  }
+
+  get group(): API.GroupInfo {
+    return this.$store.getters[GlobalGetters.GROUP_INFO];
   }
 
   get currentGroup() {
     return this.$store.getters[GlobalGetters.CURRENT_GROUP_ID];
   }
 
-  mounted() {
-    setTimeout(() => {
-      this.hasFennec = this.$lots.$fennec?.isAvailable() ?? false;
-    }, 200);
+  async mounted() {
+    this.hasFennec = await hasFennec(this, this.container);
   }
 
   async handleAuth({ code, type }) {
@@ -57,7 +62,10 @@ class LogginAction extends Vue {
       if (type === "mixin") {
         await loginMixin(this, { code, groupId: this.currentGroup });
       } else if (type === "fennec") {
-        await loginFennec(this, { groupId: this.currentGroup });
+        await loginFennec(this, {
+          groupId: this.currentGroup,
+          container: this.container
+        });
       } else {
         this.$emit("error", { message: "Error Auth Method" });
       }

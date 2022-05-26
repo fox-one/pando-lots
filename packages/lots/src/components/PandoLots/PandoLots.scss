@@ -1,4 +1,5 @@
-.f-bottom-sheet.pando-lots-modal__container {
+.f-bottom-sheet.pando-lots-modal__container--app {
+  height: 90vh;
   position: fixed;
   width: 400px !important;
   top: 32px !important;
@@ -7,6 +8,13 @@
   left: initial !important;
 }
 
+.f-bottom-sheet.pando-lots-modal__container--ifream {
+  height: 100%;
+  width: 100%;
+  max-height: 100% !important;
+}
+
 .v-dialog.f-bottom-sheet.pando-lots-modal__container {
-  height: 90vh;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
 }

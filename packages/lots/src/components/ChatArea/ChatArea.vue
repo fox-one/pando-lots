@@ -1,7 +1,7 @@
 <template>
   <div class="chat-area">
     <div v-if="!logged" class="loggin-area">
-      <loggin-action v-on="$listeners" />
+      <loggin-action v-bind="$attrs" v-on="$listeners" />
     </div>
 
     <div v-else class="form-area">

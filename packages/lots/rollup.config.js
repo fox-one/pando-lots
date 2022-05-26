@@ -4,20 +4,15 @@ import filesize from "rollup-plugin-filesize";
 import postcss from "rollup-plugin-postcss";
 import url from "postcss-url";
 import typescript from "rollup-plugin-typescript2";
-import { terser } from "rollup-plugin-terser";
 import image from "@rollup/plugin-image";
 import vue from "rollup-plugin-vue";
+import commonjs from "@rollup/plugin-commonjs";
+import replace from "@rollup/plugin-replace";
+import babel from "@rollup/plugin-babel";
 import path from "path";
 import pkg from "./package.json";
 
-const name = "PandoUI";
-
-// Default configs
-const globals = {
-  "vue-property-decorator": "vuePropertyDecorator",
-  "vue-class-component": "vueClassComponent",
-  vue: "Vue"
-};
+const name = "PandoLots";
 
 export default {
   input: "src/index.ts", // our source file
@@ -31,17 +26,6 @@ export default {
       format: "esm", // the preferred format
       compact: true,
       sourcemap: false
-    },
-    {
-      // A self-executing function, suitable for inclusion as a <script> tag.
-      // (If you want to create a bundle for your application, you probably want to use this.)
-      name,
-      file: "build/index.min.js",
-      format: "iife",
-      sourcemap: true,
-      plugins: [terser()],
-      globals,
-      exports: "named"
     }
   ],
   external: [
@@ -50,6 +34,9 @@ export default {
     "@foxone/utils/http"
   ],
   plugins: [
+    replace({
+      "process.env.NODE_ENV": JSON.stringify("production")
+    }),
     typescript({
       typescript: require("typescript"),
       module: "esnext",
@@ -57,28 +44,26 @@ export default {
       tsconfig: "tsconfig.lib.json",
       rollupCommonJSResolveHack: true
     }),
+    vue({ css: false, template: { isProduction: true } }),
+    resolve({
+      extensions: [".js", ".ts", ".svg"],
+      jsnext: true,
+      preferBuiltins: true,
+      browser: true
+    }),
+    commonjs({ browser: true }),
+    babel({
+      exclude: "node_modules/**",
+      babelHelpers: "runtime",
+      plugins: [["@babel/plugin-transform-runtime", { corejs: 3 }]]
+    }),
     json(),
     postcss({
       extract: path.resolve("build/index.css"),
       to: path.resolve("build/index.css"),
-      plugins: [
-        url({
-          url: "rebase"
-        })
-      ]
+      plugins: [url({ url: "rebase" })]
     }),
-    vue({
-      css: false,
-      template: {
-        isProduction: true
-      }
-    }),
-    resolve({
-      extensions: [".js", ".ts", ".svg"]
-    }),
-    filesize({
-      showBrotliSize: true
-    }),
+    filesize({ showBrotliSize: true }),
     image()
   ]
 };

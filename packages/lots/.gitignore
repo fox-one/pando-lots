@@ -23,3 +23,5 @@ pnpm-debug.log*
 *.sw?
 
 /src/Playground.vue
+/src/views/playground-ifream.vue
+/src/views/playground-lib.vue
