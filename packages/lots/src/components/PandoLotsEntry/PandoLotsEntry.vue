@@ -40,6 +40,8 @@ import { GlobalGetters, GlobalMutations } from "../../store/types";
 class PandoLotsEntry extends Vue {
   @Prop({ type: String, default: "product" }) env!: string;
 
+  @Prop({ type: String, default: "" }) entryBg!: string;
+
   @Prop() groupId!: string;
 
   loading = false;
@@ -65,6 +67,13 @@ class PandoLotsEntry extends Vue {
     const endpoints = this.$store.getters[GlobalGetters.END_POINTS];
 
     this.$lots.$apis.config({ baseURL: endpoints.http });
+  }
+
+  @Watch("entryBg", { immediate: true })
+  handleEntryBgChange(value) {
+    if (!value) return;
+
+    this.$vuetify.theme.themes.light.entry_bg = this.entryBg;
   }
 
   async requestGroupInfo() {
@@ -101,7 +110,7 @@ export default PandoLotsEntry;
   }
 
   &__icon {
-    background: var(--v-greyscale_6-base);
+    background: var(--v-entry_bg-base);
     border-radius: 8px;
     width: 64px;
     height: 64px;

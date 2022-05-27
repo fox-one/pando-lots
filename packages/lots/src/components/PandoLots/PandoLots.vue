@@ -56,6 +56,8 @@ class PandoLots extends Vue {
 
   @Prop({ type: String, default: "app" }) container!: string;
 
+  @Prop({ type: String, default: "" }) themeColor!: string;
+
   dialog = false;
 
   loading = false;
@@ -120,11 +122,23 @@ class PandoLots extends Vue {
     this.$lots.$apis.config({ baseURL: endpoints.http });
   }
 
+  @Watch("groupId")
+  handleGroupChange() {
+    this.$store.commit(GlobalMutations.SET_CURRENT_GROUP, this.groupId);
+  }
+
   @Watch("dialog")
   handleDialogChange(value) {
     if (!value) {
       this.$emit("close");
     }
+  }
+
+  @Watch("themeColor", { immediate: true })
+  handleThemeColorChange(value) {
+    const color = value || "#000000";
+
+    this.$vuetify.theme.themes.light.topic = color;
   }
 
   handleOpen() {

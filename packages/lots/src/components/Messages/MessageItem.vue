@@ -21,6 +21,7 @@
         <message-text
           v-if="meta.isTextMessage"
           :message="message"
+          :self="meta.self"
           v-on="$listeners"
         />
         <message-image

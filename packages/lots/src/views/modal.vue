@@ -4,6 +4,7 @@
     :env="meta.env"
     :group-id="meta.groupId"
     :groups="meta.groups"
+    :theme-color="themeColor"
     container="ifream"
     @error="handleError"
     @close="handleClose"
@@ -17,6 +18,8 @@ import { sendMessage } from "../utils/helper";
 @Component
 class ModalPage extends Vue {
   groupId = "";
+
+  themeColor = "";
 
   get meta() {
     const defaultGroupId = this.$route.query?.groupId ?? "";
@@ -36,7 +39,8 @@ class ModalPage extends Vue {
     const action = event?.data?.action;
 
     if (action === "open_lots_modal") {
-      this.groupId = event?.data?.data?.groupId ?? "";
+      this.groupId = event?.data?.groupId ?? "";
+      this.themeColor = event?.data?.themeColor ?? "";
       this.handleOpen();
     }
   }

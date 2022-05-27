@@ -1,8 +1,31 @@
 import Fennec from "@foxone/fennec-dapp";
 
-export function usePandoLots(domain, select, { entries, modal }) {
+export function usePandoLots(opts: {
+  attach: string;
+  domain: string;
+  entries: {
+    id: string;
+    query: {
+      env?: string;
+      groupId?: string;
+      themeColor?: string;
+      entryBg?: string;
+    };
+  }[];
+  modal: {
+    id: string;
+    query: {
+      env?: string;
+      groupId?: string;
+      groups?: string[];
+    };
+  };
+}) {
   const fennec = new Fennec();
-  const attach = document.querySelector(select) || document.body;
+  const attach = document.querySelector(opts.attach) || document.body;
+  const domain = opts.domain;
+  const entries = opts.entries || [];
+  const modal = opts.modal;
 
   function createEntry(entry) {
     if (!document.querySelector("#" + entry.id)) {
@@ -10,7 +33,7 @@ export function usePandoLots(domain, select, { entries, modal }) {
       const query = new URLSearchParams(entry.query);
 
       query.append("id", entry.id);
-      el.src = domain + "/entry?" + query;
+      el.src = domain + "/#/entry?" + query;
       el.id = entry.id;
       el.setAttribute(
         "style",
@@ -31,7 +54,7 @@ export function usePandoLots(domain, select, { entries, modal }) {
       const query = new URLSearchParams(modal.query);
 
       query.append("id", modal.id);
-      el.src = domain + "/modal?" + query;
+      el.src = domain + "/#/modal?" + query;
       el.id = modal.id;
       el.setAttribute(
         "style",
@@ -48,7 +71,7 @@ export function usePandoLots(domain, select, { entries, modal }) {
   }
 
   function sendMessageToModal(data) {
-    return modalElement.el.contentWindow.postMessage(
+    return modalElement.el?.contentWindow?.postMessage(
       { ...data, source: "lots_script" },
       "*"
     );
@@ -59,9 +82,13 @@ export function usePandoLots(domain, select, { entries, modal }) {
     const action = data?.action;
 
     if (action === "open_lots_modal") {
+      if (!modalElement.el) return;
+
       modalElement.el.style.display = "block";
-      sendMessageToModal({ action: "open_lots_modal" });
+      sendMessageToModal(data);
     } else if (action === "close_lots_modal") {
+      if (!modalElement.el) return;
+
       modalElement.el.style.display = "none";
     } else if (action === "query_fennec_installed") {
       sendMessageToModal({

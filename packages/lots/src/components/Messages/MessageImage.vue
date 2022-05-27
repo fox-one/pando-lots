@@ -2,7 +2,8 @@
   <v-img
     v-if="meta.url"
     :src="meta.url"
-    width="100%"
+    :width="meta.width"
+    :height="meta.height"
     class="message-image"
     @click="$emit('preview', message)"
   />
@@ -16,7 +17,11 @@ class MessageImage extends Vue {
   @Prop() message!: API.Message;
 
   get meta() {
-    return { url: this.message?.attachment?.view_url };
+    return {
+      url: this.message?.attachment?.view_url,
+      width: this.message?.attachment?.width,
+      height: this.message?.attachment?.height
+    };
   }
 }
 export default MessageImage;

@@ -1,5 +1,7 @@
 <template>
-  <div class="message-text">{{ meta.text }}</div>
+  <div class="message-text" :class="{ 'message-text--self': self }">
+    {{ meta.text }}
+  </div>
 </template>
 
 <script lang="ts">
@@ -8,6 +10,8 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 @Component
 class MessageText extends Vue {
   @Prop() message!: API.Message;
+
+  @Prop() self!: boolean;
 
   get meta() {
     return {
@@ -24,5 +28,9 @@ export default MessageText;
   font-size: 14px;
   line-height: 20px;
   padding: 12px 16px;
+}
+
+.message-text--self {
+  color: var(--v-topic-base);
 }
 </style>

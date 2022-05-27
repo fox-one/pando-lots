@@ -1,6 +1,10 @@
 <template>
   <div class="channel-title">
-    <span>{{ meta.title }}</span>
+    <div class="d-flex align-center">
+      <span class="topic--text">#</span>
+      <span>{{ meta.title }}</span>
+    </div>
+
     <v-menu v-if="meta.showArrow" offset-y nudge-bottom="10">
       <template #activator="{ on }">
         <v-icon class="ml-2" v-on="on">$FIconChevronDown</v-icon>
@@ -16,7 +20,8 @@
           }"
           @click="handleSelect(item)"
         >
-          {{ item.title }}
+          <span class="topic--text">#</span>
+          <span> {{ item.title }}</span>
         </div>
       </f-panel>
     </v-menu>
@@ -41,7 +46,7 @@ class ChannelTitle extends Vue {
 
   get meta() {
     return {
-      title: "#" + (this.group?.name ?? ""),
+      title: this.group?.name ?? "",
       showArrow: this.groupsInfo.length > 0
     };
   }
@@ -50,7 +55,7 @@ class ChannelTitle extends Vue {
     return this.groupsInfo
       .filter((x) => !!x)
       .map((x) => ({
-        title: "#" + x.name,
+        title: x.name,
         id: x.identity_number,
         active: this.currentGroup === x.identity_number
       }));
