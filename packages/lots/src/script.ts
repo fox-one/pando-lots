@@ -1,8 +1,7 @@
 import Fennec from "@foxone/fennec-dapp";
 
-const fennec = new Fennec();
-
 export function usePandoLots(domain, select, { entries, modal }) {
+  const fennec = new Fennec();
   const attach = document.querySelector(select) || document.body;
 
   function createEntry(entry) {

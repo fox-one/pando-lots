@@ -2735,9 +2735,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@foxone/pando-lots@workspace:packages/lots":
+"@foxone/pando-lots-vue@workspace:packages/lots":
   version: 0.0.0-use.local
-  resolution: "@foxone/pando-lots@workspace:packages/lots"
+  resolution: "@foxone/pando-lots-vue@workspace:packages/lots"
   dependencies:
     "@foxone/fennec-dapp": ^0.5.4
     "@foxone/icons": beta
@@ -2792,9 +2792,17 @@ __metadata:
     vuex: ^3.4.0
     vuex-persistedstate: 3.2.1
   peerDependencies:
+    "@foxone/fennec-dapp": ^0.5.4
+    "@foxone/icons": ^3.0.0
+    "@foxone/uikit": ^3.0.0
+    "@foxone/utils": ^0.2.22
+    axios: ^0.27.2
     vue: ^2.6.11
+    vue-class-component: ^7.2.3
+    vue-property-decorator: ^9.1.2
     vuetify: ^2.5.0
     vuex: ^3.4.0
+    vuex-persistedstate: 3.2.1
   languageName: unknown
   linkType: soft
 
@@ -9907,14 +9915,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fe-lib-template@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "fe-lib-template@workspace:."
-  dependencies:
-    "@foxone/dev": ^0.2.17
-  languageName: unknown
-  linkType: soft
-
 "figgy-pudding@npm:^3.5.1":
   version: 3.5.2
   resolution: "figgy-pudding@npm:3.5.2"
@@ -15386,6 +15386,14 @@ fsevents@^1.2.7:
   checksum: 71c60150b68220ec52a404f3c39a4ed38f750e42452b88fe0eb2e6b5c98e91f73f706444359b097aca1e6db83ef8fef50b5a9ec100e30a606cda6da8d45e5439
   languageName: node
   linkType: hard
+
+"pando-lots@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "pando-lots@workspace:."
+  dependencies:
+    "@foxone/dev": ^0.2.17
+  languageName: unknown
+  linkType: soft
 
 "parallel-transform@npm:^1.1.0":
   version: 1.2.0
