@@ -1,6 +1,6 @@
 {
   "name": "@foxone/pando-lots-vue",
-  "version": "0.2.2",
+  "version": "0.2.3-0",
   "module": "./build/index.esm.js",
   "typings": "./build/index.d.ts",
   "scripts": {
