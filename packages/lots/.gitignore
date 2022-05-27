@@ -25,3 +25,4 @@ pnpm-debug.log*
 /src/Playground.vue
 /src/views/playground-ifream.vue
 /src/views/playground-lib.vue
+/public/test.html
