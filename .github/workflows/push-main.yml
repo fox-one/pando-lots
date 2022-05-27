@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GH_PAT }}
 
       - name: ${{ matrix.step }}
         env:
