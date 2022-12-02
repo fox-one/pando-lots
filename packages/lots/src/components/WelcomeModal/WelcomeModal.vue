@@ -61,7 +61,9 @@ export default WelcomeModal;
 
 <style lang="scss" scoped>
 .hello-modal {
-  padding: 280px 48px 48px 48px;
+  padding: 80px 48px 48px 48px;
+  height: 100%;
+  overflow: auto;
 
   &__title {
     font-weight: 700;

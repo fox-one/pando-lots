@@ -1,4 +1,4 @@
-.f-bottom-sheet.pando-lots-modal__container--app {
+.f-bottom-sheet.pando-lots-modal__container--app:not(.pando-lots-modal__container--mobile) {
   height: 90vh;
   position: fixed !important;
   width: 400px !important;
@@ -8,13 +8,17 @@
   left: initial !important;
 }
 
+.pando-lots-modal__container--mobile {
+  height: 90vh;
+}
+
 .f-bottom-sheet.pando-lots-modal__container--ifream {
   height: 100%;
   width: 100%;
   max-height: 100% !important;
 }
 
-.v-dialog.f-bottom-sheet.pando-lots-modal__container {
+.v-dialog.f-bottom-sheet.pando-lots-modal__container:not(.pando-lots-modal__container--mobile) {
   border: 1px solid #ebebeb;
   border-radius: 8px;
 }

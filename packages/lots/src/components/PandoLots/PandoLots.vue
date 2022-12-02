@@ -1,7 +1,7 @@
 <template>
   <f-bottom-sheet
     v-model="dialog"
-    hide-overlay
+    :hide-overlay="!isMobile"
     :hide-close-icon="true"
     :menu-props="{
       'close-on-click': false,
@@ -65,8 +65,15 @@ class PandoLots extends Vue {
   get contentClass() {
     return [
       "pando-lots-modal__container",
-      `pando-lots-modal__container--${this.container}`
-    ].join(" ");
+      `pando-lots-modal__container--${this.container}`,
+      this.isMobile && "pando-lots-modal__container--mobile"
+    ]
+      .filter((v) => !!v)
+      .join(" ");
+  }
+
+  get isMobile() {
+    return this.$vuetify.breakpoint.mdAndDown;
   }
 
   get logged() {
@@ -95,6 +102,8 @@ class PandoLots extends Vue {
   mounted() {
     this.$nextTick(() => {
       this.init();
+
+      console.log(this.$vuetify);
     });
   }
 

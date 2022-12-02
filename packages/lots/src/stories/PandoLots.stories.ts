@@ -1,6 +1,8 @@
 import { Meta, StoryFn } from "@storybook/vue";
 import { PandoLots } from "../components";
 
+import "./PandoLots.scss";
+
 export default {
   title: "PandoLots",
   component: PandoLots

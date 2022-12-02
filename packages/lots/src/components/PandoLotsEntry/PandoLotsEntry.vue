@@ -103,6 +103,7 @@ export default PandoLotsEntry;
   align-items: center;
   cursor: pointer;
   padding: 16px;
+  border-radius: 8px;
 
   &:hover {
     background: var(--v-greyscale_6-base);
