@@ -5,9 +5,8 @@ on:
     branches:
       - main
 
-    paths:
-      - "packages/lots/src/**"
-      - "packages/lots/.storybook/**"
+    tags:
+      - "*"
 
 jobs:
   docs:
