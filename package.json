@@ -15,7 +15,8 @@
     "build": "foxone-dev-build-ts",
     "build:release": "foxone-ci-ghact-build",
     "lint": "foxone-dev-run-lint",
-    "test": "foxone-dev-run-test --coverage --passWithNoTests"
+    "test": "foxone-dev-run-test --coverage --passWithNoTests",
+    "docs": "cd packages/lots && yarn build-storybook"
   },
   "dependencies": {
     "@foxone/dev": "^0.2.17"

@@ -8,8 +8,12 @@ export const END_POINTS = {
     websocket: "wss://supergroup-api.mixin.fan"
   },
   develop: {
-    http: "https://dev-courses-api.firesbox.com/v1",
-    websocket: "wss://dev-courses-ws.firesbox.com"
+    http: "https://dev-xuexi-courses-api.songy.info/v1",
+    websocket: "wss://dev-courses-ws.songy.info"
+  },
+  oversea: {
+    http: "https://supergroup-api.mixin.fan/v1",
+    websocket: "wss://supergroup-api.mixin.fan"
   }
 };
 

@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["vuetify", "node"]
+    "types": ["vuetify", "node", "@foxone/uikit"]
   }
 }

@@ -104,10 +104,14 @@ class PandoLots extends Vue {
 
     this.loading = true;
 
-    await this.$store.dispatch(GlobalActions.LOAD_PUBLIC_INFO, this);
+    try {
+      await this.$store.dispatch(GlobalActions.LOAD_PUBLIC_INFO, this);
 
-    if (this.logged) {
-      await this.$store.dispatch(GlobalActions.LOAD_ACCOUNT_INFO, this);
+      if (this.logged) {
+        await this.$store.dispatch(GlobalActions.LOAD_ACCOUNT_INFO, this);
+      }
+    } catch (error) {
+      console.log(error);
     }
 
     this.loading = false;
