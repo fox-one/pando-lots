@@ -2,12 +2,13 @@ name: Doc
 
 on:
   push:
-    tags:
-      - "*"
+    branches:
+      - main
 
 jobs:
   docs:
     name: Docs
+    if: "! startsWith(github.event.head_commit.message, '[CI Skip]') && github.repository == 'fox-one/pando-lots'"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
