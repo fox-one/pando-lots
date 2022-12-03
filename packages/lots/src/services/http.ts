@@ -46,7 +46,6 @@ function generateAuthInterceptor(store: Store<any>) {
 
 export default function createHttpService(store: Store<any>) {
   const endpoints = store.getters[GlobalGetters.END_POINTS];
-
   const http = new Http(
     { baseURL: endpoints.http },
     [generateAuthInterceptor(store)],

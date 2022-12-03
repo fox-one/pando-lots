@@ -57,6 +57,7 @@ class PandoLotsEntry extends Vue {
   }
 
   mounted() {
+    this.handleEnvChange();
     this.requestGroupInfo();
   }
 

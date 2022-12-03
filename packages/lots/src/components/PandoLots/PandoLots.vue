@@ -102,8 +102,6 @@ class PandoLots extends Vue {
   mounted() {
     this.$nextTick(() => {
       this.init();
-
-      console.log(this.$vuetify);
     });
   }
 
@@ -112,6 +110,7 @@ class PandoLots extends Vue {
     if (!this.currentGroup) return;
 
     this.loading = true;
+    this.handleEnvChange();
 
     try {
       await this.$store.dispatch(GlobalActions.LOAD_PUBLIC_INFO, this);

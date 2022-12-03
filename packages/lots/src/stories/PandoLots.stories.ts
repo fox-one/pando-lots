@@ -18,15 +18,15 @@ const Template: StoryFn = (args, { argTypes }) => ({
   template: `
     <pando-lots
       ref="lots"
-      env="develop"
-      group-id="7000103413"
-      :groups="['7000103413']"
+      group-id="7000103488"
+      :groups="['7000103488']"
+      env="oversea"
       @error="handleError"
     >
       <template #activator="{ on }">
         <pando-lots-entry
-          env="develop"
-          group-id="7000104299"
+          env="oversea"
+          group-id="7000103488"
           @click.native="on.click"
         />
       </template>
