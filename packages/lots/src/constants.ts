@@ -13,7 +13,7 @@ export const END_POINTS = {
   },
   oversea: {
     http: "https://supergroup-api.mixin.fan/v1",
-    websocket: "wss://supergroup-api.mixin.fan"
+    websocket: "wss://supergroup-ws.mixin.fan"
   }
 };
 
