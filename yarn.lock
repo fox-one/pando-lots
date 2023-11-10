@@ -4221,7 +4221,7 @@ __metadata:
     "@vue/cli-service": ~4.5.0
     "@vue/eslint-config-prettier": ^6.0.0
     "@vue/eslint-config-typescript": ^7.0.0
-    axios: ^0.27.2
+    axios: ^1.6.0
     babel-loader: ^8.3.0
     core-js: ^3.6.5
     css-loader: ^5.0.0
@@ -4262,7 +4262,7 @@ __metadata:
     "@foxone/icons": ^3.0.0
     "@foxone/uikit": ^3.0.0
     "@foxone/utils": ^0.2.22
-    axios: ^0.27.2
+    axios: ^1.6.0
     vue: ^2.6.11
     vue-class-component: ^7.2.3
     vue-property-decorator: ^9.1.2
@@ -9071,13 +9071,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.27.2":
-  version: 0.27.2
-  resolution: "axios@npm:0.27.2"
+"axios@npm:^1.6.0":
+  version: 1.6.1
+  resolution: "axios@npm:1.6.1"
   dependencies:
-    follow-redirects: ^1.14.9
+    follow-redirects: ^1.15.0
     form-data: ^4.0.0
-  checksum: 6eaa903e6990054d999376c0679ff2172c7f7874d9ae66b91456a56570cce29f4a81c98bfb112ef2ef774125ef6fa3d73fd507ac153b2d3df644a5e956f9bf07
+    proxy-from-env: ^1.1.0
+  checksum: c3dc937a37352ac83979d44c303965e6a7cace0cbe0313dd816f167a5c2dde34f3f7fe3a963c4f1677e240a4fbd02e1d00f3f13ec9995654c93e7918da3fb30c
   languageName: node
   linkType: hard
 
@@ -14212,13 +14213,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.9":
-  version: 1.15.0
-  resolution: "follow-redirects@npm:1.15.0"
+"follow-redirects@npm:^1.15.0":
+  version: 1.15.3
+  resolution: "follow-redirects@npm:1.15.3"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: 06e19a010288e3b0dcaf478a4ace2b4df20a5f3ca97c07026d63feda91121e0c0273ad3f293a6e5945ad3607b6d484a23061e79d6160b5406300e5f4357252d6
+  checksum: 1fd01d726599ac41af19682571a6ef23d7c278773f9d0752a8ba6904b6f609dbbdab50e7a90bf5c63329bea519ec71b3936d7725b1486acf13b56b092e798fd3
   languageName: node
   linkType: hard
 
@@ -22177,6 +22178,13 @@ fsevents@^1.2.7:
     forwarded: 0.2.0
     ipaddr.js: 1.9.1
   checksum: ad78682246dc20ed6ca4080539349828bc2708cf0b69c55d6a3c41532780a8d05f563dcbac6ec4b74dce367421bff6fc4bc6b700b14319ecf57c93bd62727fc6
+  languageName: node
+  linkType: hard
+
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: 6459372a57f3e8ef5211f7847ca2fffabcdd6490005892fcc0dcd62fe2b3551900c8a07fad7df9de3897547b1ab4ac7a7197964cd6fa7e76303caa4936bfaf32
   languageName: node
   linkType: hard
 
